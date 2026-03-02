@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.plugin.cobol</groupId>
+    <artifactId>sonar-cobol-ibm-standards-plugin</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+
+    <developers>
+        <developer>
+            <name>jmcordero74</name>
+            <email>jmcorderoperez@gmail.com</email>
+            <url>https://github.com/jmcordero74</url>
+        </developer>
+    </developers>
+
+    <name>COBOL Standards Plugin</name>
+    <description>Community plugin for SonarQube to detect COBOL extensions and standards compliance. Not affiliated with IBM or Sonarsource.</description>
+    <url>https://github.com/jmcordero74/sonar-cobol-ibm-standards-plugin</url>
+
+    <licenses>
+        <license>
+            <name>Apache License 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <properties>
+        <maven.compiler.release>11</maven.compiler.release>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <sonar.apiVersion>9.14.0.375</sonar.apiVersion>
+    </properties>
+
+    <dependencies>
+        <!-- SonarQube Plugin API -->
+        <dependency>
+            <groupId>org.sonarsource.api.plugin</groupId>
+            <artifactId>sonar-plugin-api</artifactId>
+            <version>${sonar.apiVersion}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- SLF4J para logging -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>2.0.9</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Test dependencies -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.10.1</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.24.2</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>5.7.0</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- Plugin de empaquetado SonarQube -->
+            <plugin>
+                <groupId>org.sonarsource.sonar-packaging-maven-plugin</groupId>
+                <artifactId>sonar-packaging-maven-plugin</artifactId>
+                <version>1.23.0.740</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <pluginKey>cobol-ibm-standards</pluginKey>
+                    <pluginClass>com.plugin.cobol.CobolPlugin</pluginClass>
+                    <pluginName>COBOL Standards (Community)</pluginName>
+                    <pluginDescription>Community plugin: detects COBOL extensions vs ANSI 85 standard. Not affiliated with IBM or Sonarsource.</pluginDescription>
+                    <pluginOrganizationName>Community</pluginOrganizationName>
+                    <pluginUrl>https://github.com/jmcordero74/sonar-cobol-ibm-standards-plugin</pluginUrl>
+                </configuration>
+            </plugin>
+
+            <!-- Compilador Maven -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+            </plugin>
+
+            <!-- Surefire para tests -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0</version>
+            </plugin>
+        </plugins>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>sonarsource</id>
+            <url>https://repox.jfrog.io/repox/sonarsource</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>sonarsource</id>
+            <url>https://repox.jfrog.io/repox/sonarsource</url>
+        </pluginRepository>
+    </pluginRepositories>
+</project>

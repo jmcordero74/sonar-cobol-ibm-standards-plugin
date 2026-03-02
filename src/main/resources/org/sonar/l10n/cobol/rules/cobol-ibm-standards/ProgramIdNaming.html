@@ -1,0 +1,39 @@
+<p>
+El párrafo PROGRAM-ID en IBM COBOL permite extensiones que no están en la norma ANSI 85 COBOL estándar:
+</p>
+
+<h2>Extensiones IBM permitidas:</h2>
+<ul>
+  <li>Nombres de hasta <strong>160 caracteres</strong> (norma 85: 30 caracteres)</li>
+  <li>Puede comenzar con <strong>subrayado (_)</strong></li>
+  <li>Puede ser un <strong>literal alfanumérico</strong> entre comillas</li>
+  <li><strong>ID</strong> es abreviatura válida para IDENTIFICATION</li>
+  <li>El punto después del nombre es <strong>opcional</strong></li>
+</ul>
+
+<h2>Código no conforme:</h2>
+<pre>
+IDENTIFICATION DIVISION.
+PROGRAM-ID. _.
+      * Nombre inválido: solo un subrayado
+
+PROGRAM-ID. PROGRAMA-CON-NOMBRE-MUY-LARGO-QUE-EXCEDE-LOS-160-CARACTERES-PERMITIDOS-POR-IBM-COBOL-Y-DEBERIA-SER-RECHAZADO-PORQUE-ES-DEMASIADO-EXTENSO-PARA-SER-PROCESADO-CORRECTAMENTE-POR-EL-COMPILADOR-Y-PUEDE-CAUSAR-PROBLEMAS.
+      * Excede 160 caracteres
+</pre>
+
+<h2>Código conforme:</h2>
+<pre>
+IDENTIFICATION DIVISION.
+PROGRAM-ID. MI-PROGRAMA.
+
+ID DIVISION.
+PROGRAM-ID. _PROGRAMA-CON-SUBRAYADO.
+
+PROGRAM-ID. "PROGRAMA-LITERAL".
+</pre>
+
+<h2>Referencia:</h2>
+<p>
+IBM COBOL for Linux on x86 v1.2.0 - IDENTIFICATION DIVISION<br>
+<a href="https://www.ibm.com/docs/en/cobol-linux-x86/1.2.0">https://www.ibm.com/docs/en/cobol-linux-x86/1.2.0</a>
+</p>

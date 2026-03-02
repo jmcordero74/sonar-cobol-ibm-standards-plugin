@@ -1,0 +1,16 @@
+{
+  "title": "Cláusula RECURSIVE debe documentarse",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant/Issue",
+    "constantCost": "2min"
+  },
+  "tags": [
+    "cobol",
+    "identification-division",
+    "ibm-extension",
+    "recursive"
+  ],
+  "defaultSeverity": "Info"
+}
