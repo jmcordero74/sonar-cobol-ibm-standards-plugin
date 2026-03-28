@@ -1,68 +1,68 @@
 # Changelog
 
-Todos los cambios notables en este proyecto serán documentados en este archivo.
+All notable changes to this project will be documented in this file.
 
-El formato está basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/),
-y este proyecto adhiere a [Semantic Versioning](https://semver.org/lang/es/).
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [1.0.0] - 2024-03-02
 
-### Añadido
-- 71 reglas para detectar extensiones IBM COBOL
-- Detección de código duplicado (CPD)
-- Perfil de calidad "Cobol Analyzer"
-- Soporte para SonarQube 9.9+
-- Documentación completa en README
-- Tests unitarios con JUnit 5
-- Licencia Apache 2.0
+### Added
+- 71 rules to detect IBM COBOL extensions
+- Duplicate code detection (CPD)
+- "Cobol Analyzer" quality profile
+- Support for SonarQube 9.9+
+- Full documentation in README
+- Unit tests with JUnit 5
+- Apache 2.0 license
 
-### Reglas Implementadas
+### Implemented Rules
 
 #### IDENTIFICATION DIVISION
-- PROGRAM-ID con nombres hasta 160 caracteres
-- Cláusula RECURSIVE
-- Abreviatura ID para IDENTIFICATION
+- PROGRAM-ID with names up to 160 characters
+- RECURSIVE clause
+- ID abbreviation for IDENTIFICATION
 
 #### DATA DIVISION
 - LOCAL-STORAGE SECTION
-- USAGE NATIONAL y extensiones
-- PICTURE con hasta 50 caracteres
-- OCCURS, REDEFINES extendidos
-- DATE-FORMAT para Y2K
+- USAGE NATIONAL and extensions
+- PICTURE with up to 50 characters
+- Extended OCCURS, REDEFINES
+- DATE-FORMAT for Y2K
 
 #### PROCEDURE DIVISION
 - GOBACK, ENTRY
 - XML PARSE/GENERATE
-- CALL con BY VALUE/RETURNING
-- Extensiones en READ, WRITE, etc.
+- CALL with BY VALUE/RETURNING
+- Extensions in READ, WRITE, etc.
 
-#### Funciones Intrínsecas
+#### Intrinsic Functions
 - ADD-DURATION, SUBTRACT-DURATION
 - TRIML, TRIMR
 - DATE-TO-YYYYMMDD, YEARWINDOW
-- Y más...
+- And more...
 
-#### Directivas de Compilador
+#### Compiler Directives
 - BASIS, *CBL, *CONTROL
 - EJECT, SKIP1/2/3
 - CALLINTERFACE
 
-### Características
-- Análisis de sintaxis COBOL
-- Detección de extensiones IBM vs ANSI 85
-- CPD tokenizer para duplicados
-- Compatible con formato fijo y libre
-- Soporte para archivos .cbl, .cob, .cobol, .cpy
+### Features
+- COBOL syntax analysis
+- Detection of IBM vs ANSI 85 extensions
+- CPD tokenizer for duplicates
+- Compatible with fixed and free format
+- Support for .cbl, .cob, .cobol, .cpy files
 
 ---
 
 ## [Unreleased]
 
-### Planeado
-- Más tests unitarios
-- Definiciones HTML para todas las reglas
-- Ejemplos de código en documentación
-- Integración continua (GitHub Actions)
+### Planned
+- More unit tests
+- HTML definitions for all rules
+- Code examples in documentation
+- Continuous integration (GitHub Actions)
 
 ---
 

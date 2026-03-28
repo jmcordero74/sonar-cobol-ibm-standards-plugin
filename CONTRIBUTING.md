@@ -1,64 +1,64 @@
-# Contribuir al Proyecto
+# Contributing to the Project
 
-¡Gracias por tu interés en contribuir! 🎉
+Thank you for your interest in contributing! 🎉
 
-## Cómo Contribuir
+## How to Contribute
 
-### 1. Reportar Bugs
+### 1. Reporting Bugs
 
-Abre un [issue](https://github.com/jmcordero74/sonar-cobol-ibm-standards-plugin/issues) con:
-- Descripción del problema
-- Pasos para reproducirlo
-- Versión de SonarQube
-- Ejemplo de código COBOL (si aplica)
+Open an [issue](https://github.com/jmcordero74/sonar-cobol-ibm-standards-plugin/issues) with:
+- Description of the problem
+- Steps to reproduce it
+- SonarQube version
+- Example COBOL code (if applicable)
 
-### 2. Sugerir Mejoras
+### 2. Suggesting Improvements
 
-Abre un [issue](https://github.com/jmcordero74/sonar-cobol-ibm-standards-plugin/issues) con:
-- Descripción de la mejora
-- Caso de uso
-- Beneficio esperado
+Open an [issue](https://github.com/jmcordero74/sonar-cobol-ibm-standards-plugin/issues) with:
+- Description of the improvement
+- Use case
+- Expected benefit
 
-### 3. Enviar Pull Requests
+### 3. Submitting Pull Requests
 
-1. **Fork** el repositorio
-2. **Crea una rama**: `git checkout -b feature/nueva-regla`
-3. **Haz tus cambios**
-4. **Añade tests** si es posible
-5. **Commit**: `git commit -m "Añadir regla para detectar X"`
-6. **Push**: `git push origin feature/nueva-regla`
-7. **Abre un Pull Request**
+1. **Fork** the repository
+2. **Create a branch**: `git checkout -b feature/new-rule`
+3. **Make your changes**
+4. **Add tests** if possible
+5. **Commit**: `git commit -m "Add rule to detect X"`
+6. **Push**: `git push origin feature/new-rule`
+7. **Open a Pull Request**
 
-### Requisitos para PRs
+### Requirements for PRs
 
-- ✅ Código compila: `mvn clean package`
-- ✅ Tests pasan: `mvn test`
-- ✅ Descripción clara del cambio
-- ✅ Referencia a issue (si existe)
+- ✅ Code compiles: `mvn clean package`
+- ✅ Tests pass: `mvn test`
+- ✅ Clear description of the change
+- ✅ Reference to issue (if applicable)
 
-## Desarrollo Local
+## Local Development
 
 ```bash
-# Clonar
+# Clone
 git clone https://github.com/jmcordero74/sonar-cobol-ibm-standards-plugin.git
 cd sonar-cobol-ibm-standards-plugin
 
-# Compilar
+# Compile
 mvn clean package
 
-# Ejecutar tests
+# Run tests
 mvn test
 
-# Instalar en SonarQube local
+# Install in local SonarQube
 cp target/sonar-cobol-ibm-standards-plugin-1.0.0.jar $SONARQUBE_HOME/extensions/plugins/
 ```
 
-## Código de Conducta
+## Code of Conduct
 
-- Sé respetuoso
-- Acepta críticas constructivas
-- Enfócate en lo mejor para el proyecto
+- Be respectful
+- Accept constructive criticism
+- Focus on what is best for the project
 
-## Licencia
+## License
 
-Al contribuir, aceptas que tus contribuciones se licencien bajo Apache License 2.0.
+By contributing, you agree that your contributions will be licensed under Apache License 2.0.
