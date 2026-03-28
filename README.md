@@ -4,45 +4,45 @@
 [![SonarQube](https://img.shields.io/badge/SonarQube-9.9%2B-blue)](https://www.sonarqube.org/)
 [![Java](https://img.shields.io/badge/Java-11%2B-orange)](https://www.oracle.com/java/)
 
-Plugin **comunitario** para SonarQube que detecta el uso de extensiones propietarias de IBM COBOL
-y verifica el cumplimiento de la norma ANSI/ISO 85 COBOL estándar.
+**Community** plugin for SonarQube that detects the use of IBM COBOL proprietary extensions
+and verifies compliance with the ANSI/ISO 85 standard COBOL.
 
-> **⚠️ Disclaimer:** Este plugin es un proyecto de la comunidad, independiente y no oficial.
-> No está afiliado, patrocinado ni aprobado por **IBM** ni por **Sonarsource**.
-> "IBM" e "IBM COBOL" son marcas registradas de International Business Machines Corporation.
-> "SonarQube" es una marca registrada de Sonarsource SA.
-> Las reglas se basan en la documentación pública de IBM disponible en:
+> **⚠️ Disclaimer:** This plugin is a community project, independent and unofficial.
+> It is not affiliated with, sponsored by, or approved by **IBM** or **Sonarsource**.
+> "IBM" and "IBM COBOL" are trademarks of International Business Machines Corporation.
+> "SonarQube" is a trademark of Sonarsource SA.
+> The rules are based on IBM public documentation available at:
 > https://www.ibm.com/docs/en/cobol-linux-x86/1.2.0
 
 ---
 
-## Qué hace
+## What it does
 
-Analiza código fuente COBOL e identifica extensiones IBM que no forman parte de la norma 85 COBOL
-estándar (ANSI X3.23-1985 / ISO 1989:1985). Útil para:
+Analyzes COBOL source code and identifies IBM extensions that are not part of the standard COBOL 85
+specification (ANSI X3.23-1985 / ISO 1989:1985). Useful for:
 
-- Auditar portabilidad del código COBOL
-- Documentar dependencias de plataforma IBM
-- Detectar bloques de código duplicados (CPD)
-- Establecer una línea base de cumplimiento de estándares
+- Auditing COBOL code portability
+- Documenting IBM platform dependencies
+- Detecting duplicate code blocks (CPD)
+- Establishing a standard compliance baseline
 
-## Requisitos
+## Requirements
 
-- SonarQube 9.9 LTS o superior
-- Java 11 o superior
-- Maven 3.6+ (para compilar)
+- SonarQube 9.9 LTS or higher
+- Java 11 or higher
+- Maven 3.6+ (to compile)
 
-## Instalación
+## Installation
 
-### Opción A: Desde el JAR precompilado
+### Option A: From the precompiled JAR
 
 ```bash
 cp sonar-cobol-ibm-standards-plugin-1.0.0.jar $SONARQUBE_HOME/extensions/plugins/
-# Reiniciar SonarQube
+# Restart SonarQube
 $SONARQUBE_HOME/bin/linux-x86-64/sonar.sh restart
 ```
 
-### Opción B: Compilar desde fuentes
+### Option B: Compile from source
 
 ```bash
 git clone https://github.com/jmcordero74/sonar-cobol-ibm-standards-plugin.git
@@ -51,69 +51,69 @@ mvn clean package
 cp target/sonar-cobol-ibm-standards-plugin-1.0.0.jar $SONARQUBE_HOME/extensions/plugins/
 ```
 
-## Configuración del proyecto
+## Project configuration
 
-Crea un archivo `sonar-project.properties` en la raíz de tu proyecto COBOL:
+Create a `sonar-project.properties` file at the root of your COBOL project:
 
 ```properties
-sonar.projectKey=mi-proyecto-cobol
-sonar.projectName=Mi Proyecto COBOL
+sonar.projectKey=my-cobol-project
+sonar.projectName=My COBOL Project
 sonar.projectVersion=1.0
 
 sonar.sources=.
 sonar.language=cobol
 sonar.cobol.file.suffixes=.cbl,.cob,.cobol,.cpy,.CBL,.COB
 
-# Encoding: ISO-8859-1 para código de mainframe, UTF-8 para desarrollo moderno
+# Encoding: ISO-8859-1 for mainframe code, UTF-8 for modern development
 sonar.sourceEncoding=ISO-8859-1
 
 sonar.host.url=http://localhost:9000
-sonar.token=TU_TOKEN
+sonar.token=YOUR_TOKEN
 ```
 
-Luego ejecuta:
+Then run:
 
 ```bash
-cd /ruta/a/tu/proyecto
+cd /path/to/your/project
 sonar-scanner
 ```
 
-## Reglas incluidas (71 reglas)
+## Included rules (71 rules)
 
-| Área | Ejemplos de reglas |
-|------|-------------------|
-| IDENTIFICATION DIVISION | RECURSIVE, nombre hasta 160 chars, ID como abreviatura |
-| Caracteres y Unicode | USAGE NATIONAL, GROUP-USAGE NATIONAL, literales N"..." |
-| Literales | X"..." hex, Z"..." nulos, flotantes, apóstrofo como delimitador |
-| DATA DIVISION | LOCAL-STORAGE, GLOBAL en LINKAGE, SYNCHRONIZED nivel 01 |
-| PROCEDURE DIVISION | GOBACK, ENTRY, XML PARSE/GENERATE, BY VALUE en cabecera |
+| Area | Example rules |
+|------|--------------|
+| IDENTIFICATION DIVISION | RECURSIVE, name up to 160 chars, ID as abbreviation |
+| Characters and Unicode | USAGE NATIONAL, GROUP-USAGE NATIONAL, N"..." literals |
+| Literals | X"..." hex, Z"..." null-terminated, floating point, apostrophe as delimiter |
+| DATA DIVISION | LOCAL-STORAGE, GLOBAL in LINKAGE, SYNCHRONIZED at level 01 |
+| PROCEDURE DIVISION | GOBACK, ENTRY, XML PARSE/GENERATE, BY VALUE in header |
 | FILE / I-O | ORGANIZATION LINE SEQUENTIAL, PASSWORD, APPLY WRITE-ONLY |
-| Sentencias | CLOSE NO REWIND, END-IF con NEXT SENTENCE, STOP con literal |
-| Funciones intrínsecas | ADD-DURATION, TRIML, TRIMR, DATE-TO-YYYYMMDD, YEARWINDOW |
-| Directivas | BASIS, *CBL, *CONTROL, EJECT, SKIP1/2/3, CALLINTERFACE |
-| Detección de duplicados | CPD tokenizer para bloques de código COBOL duplicados |
+| Statements | CLOSE NO REWIND, END-IF with NEXT SENTENCE, STOP with literal |
+| Intrinsic functions | ADD-DURATION, TRIML, TRIMR, DATE-TO-YYYYMMDD, YEARWINDOW |
+| Directives | BASIS, *CBL, *CONTROL, EJECT, SKIP1/2/3, CALLINTERFACE |
+| Duplicate detection | CPD tokenizer for duplicate COBOL code blocks |
 
-## Perfil de calidad
+## Quality profile
 
-El plugin registra automáticamente el perfil **"Cobol Analyzer"** con las 71 reglas activadas.
+The plugin automatically registers the **"Cobol Analyzer"** profile with all 71 rules enabled.
 
-Para aplicarlo a tu proyecto: `Quality Profiles → COBOL → Cobol Analyzer → Set as Default`
+To apply it to your project: `Quality Profiles → COBOL → Cobol Analyzer → Set as Default`
 
-## Autor
+## Author
 
 **jmcordero74** - [GitHub](https://github.com/jmcordero74)
 
-## Licencia
+## License
 
-Apache License 2.0 — ver [LICENSE](LICENSE)
+Apache License 2.0 — see [LICENSE](LICENSE)
 
-Este plugin puede usarse, modificarse y distribuirse libremente.
-Las marcas registradas de IBM y Sonarsource pertenecen a sus respectivos propietarios.
+This plugin may be freely used, modified, and distributed.
+IBM and Sonarsource trademarks belong to their respective owners.
 
-## Contribuciones
+## Contributions
 
-Pull requests bienvenidos. Por favor abre un issue antes de hacer cambios grandes.
+Pull requests welcome. Please open an issue before making large changes.
 
-## Soporte
+## Support
 
-Si encuentras algún problema o tienes sugerencias, por favor abre un [issue](https://github.com/jmcordero74/sonar-cobol-ibm-standards-plugin/issues).
+If you find any issues or have suggestions, please open an [issue](https://github.com/jmcordero74/sonar-cobol-ibm-standards-plugin/issues).
